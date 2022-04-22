@@ -6,7 +6,7 @@ namespace MagicBattle
     {
         private List<string> _spells = new List<string>();
         private int _basePower = 0;
-        private int _experience = 0;
+        private int _experience = 0;        
 
         private const int RequiredLevelModifier = 1000;
 
@@ -21,7 +21,7 @@ namespace MagicBattle
             : base(age, name)
         {
             Level = level;
-            Rarity = rarity;
+            Rarity = rarity;            
         }
 
 

@@ -8,19 +8,26 @@ namespace MagicBattle
     {
         static void Main(string[] args)
         {
-            var magician = new Magician(27, 10, "Vlad", Rarity.Epic);
+            //var magician = new Magician(27, 10, "Vlad", Rarity.Epic);
 
-            //Console.WriteLine(magician.ToString());
-            //Console.WriteLine($"We need {magician.RemainingExp} experinece to levelup");
+            ////Console.WriteLine(magician.ToString());
+            ////Console.WriteLine($"We need {magician.RemainingExp} experinece to levelup");
 
-            //magician.GainExperience(magician.RemainingExp + 10);
-            //Console.WriteLine(magician);
-            //Console.WriteLine($"We need {magician.RemainingExp} experinece to levelup");
+            ////magician.GainExperience(magician.RemainingExp + 10);
+            ////Console.WriteLine(magician);
+            ////Console.WriteLine($"We need {magician.RemainingExp} experinece to levelup");
 
-            var secondMage = new Magician(20, 5, "Gman", Rarity.Common);
+            //var secondMage = new Magician(20, 5, "Gman", Rarity.Common);
 
-            var result = magician + secondMage;
-            Console.WriteLine(result);
+            //var result = magician + secondMage;
+            //Console.WriteLine(result);
+
+            Spell testspell = new Spell();
+            Console.WriteLine(testspell.SpellInfo());
+            DestructionSpell test2 = new DestructionSpell();
+            test2.Name = "asdf";
+            Console.WriteLine(test2.SpellInfo());
+
 
         }
     }
