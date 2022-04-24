@@ -9,5 +9,10 @@ namespace MagicBattle
         public int Damage { get; protected set; }
         public int ManaCost { get; protected set; }
         public string Effect { get; protected set; }
+
+        public virtual void Cast()
+        {
+            Console.WriteLine("Casted from base"); 
+        }
     }
 }

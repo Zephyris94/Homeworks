@@ -22,6 +22,11 @@ namespace MagicBattle.Spells
         {
             return $"Name = {Effect}, ManaCost = {ManaCost} , Damage = {Damage} , Type {TypeOfMagic}";
         }
+
+        public override void Cast()
+        {
+            Console.WriteLine("Casted fireball");
+        }
     }
    
 }
