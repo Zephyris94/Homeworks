@@ -10,6 +10,6 @@ namespace MagicBattle.Other
             Fire = 1,
             Dark = 2,
             Holy = 3,
-            Father = 4
+            Wather = 4
         }
 }
