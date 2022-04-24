@@ -2,7 +2,7 @@
 
 namespace MagicBattle
 {
-    public class Magician : Human
+    public class Magician : Character
     {
         private List<string> _spells = new List<string>();
         private int _basePower = 0;
@@ -10,22 +10,24 @@ namespace MagicBattle
 
         private const int RequiredLevelModifier = 1000;
 
-        public Magician()
-            : base(25, "Doe")
-        {
-            Level = 10;
-            Rarity = Rarity.Common;
-        }
+        //public Magician()
+        //{
+        //    Name = "Doe";
+        //    Age = 30;
+        //    Level = 10;
+        //    Rarity = Rarity.Common;
+        //}
 
-        public Magician(int age, int level, string name, Rarity rarity)
-            : base(age, name)
+        public Magician(int age, int level, string name, Rarity rarity)           
         {
+            Name = name;
+            Age = age;
             Level = level;
             Rarity = rarity;
         }
 
 
-        public int Level { get; private set; }
+        public new int Level { get; private set; }
 
         public Rarity Rarity { get; private set; }
 
@@ -67,10 +69,10 @@ namespace MagicBattle
             return $"{baseData}. {Rarity} Magician {Level} lvl. has {Power} power score with {_spells.Count} spells";
         }
 
-        public static Magician operator +(Magician m1, Magician m2)
-        {
-            Magician newMagician = new Magician(m1.Age + m2.Age, m1.Level + m2.Level, "ULTRAXXX", Rarity.Legendary);
-            return newMagician;
-        }
+        //public static Magician operator +(Magician m1, Magician m2)
+        //{
+        //    Magician newMagician = new Magician(m1.Age + m2.Age, m1.Level + m2.Level, "ULTRAXXX", Rarity.Legendary);
+        //    return newMagician;
+        //}
     }
 }
