@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace MagicBattle
 {
-    public class Magician : Character
+    public class Warrior : Character
     {
-        private List<string> _spells = new List<string>();
+        private List<string> _skills = new List<string>();
         private int _basePower = 0;
         private int _experience = 0;
         private int _baseIntelligence = 10;
@@ -22,25 +24,25 @@ namespace MagicBattle
         //    Rarity = Rarity.Common;
         //}
 
-        public Magician(int age, int level, string name, int mana, int intelligence, int healthPoints, Race race, Rarity rarity)           
+        public Warrior (int age, int level, string name, int strength, int stamina, int agility, int healthPoints, Race race, Rarity rarity)
         {
-            
+
             Name = name;
             Age = age;
             Level = level;
             HealthPoints = healthPoints;
-            Mana = mana;
-            Intelligence = intelligence;
+            Strength = strength;
+            Stamina = stamina;
+            Agility = agility;
             Rarity = rarity;
             Race = race;
         }
 
-        //public new int Level { get; private set; }
 
         public Rarity Rarity { get; private set; }
         public Race Race { get; private set; }
 
-        public int Power => (int) Rarity * 2 + Level * 10 + _spells.Count * 10 + _basePower*3;
+        public int Power => (int)Rarity * 2 + Level * 10 + _skills.Count * 10 + _basePower * 3;
 
         public int RemainingExp => RequiredExp - _experience;
 
@@ -48,7 +50,7 @@ namespace MagicBattle
 
         public void LearnSpell(string spell)
         {
-            _spells.Add(spell);
+            _skills.Add(spell);
         }
 
         public void RenameCharacter(string newName)
@@ -76,13 +78,7 @@ namespace MagicBattle
         {
             var baseData = base.ToString();
             return $"{baseData}.HP: {HealthPoints}, Mana: {Mana}, Intelligence: {Intelligence}, Rase: {Race}, {Rarity} Magician  " +
-                $"has {Power} power score with {_spells.Count} spells";
+                $"has {Power} power score with {_skills.Count} spells";
         }
-
-        //public static Magician operator +(Magician m1, Magician m2)
-        //{
-        //    Magician newMagician = new Magician(m1.Age + m2.Age, m1.Level + m2.Level, "ULTRAXXX", Rarity.Legendary);
-        //    return newMagician;
-        //}
     }
 }
