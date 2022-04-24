@@ -9,28 +9,31 @@ namespace MagicBattle
         private List<string> _skills = new List<string>();
         private int _basePower = 0;
         private int _experience = 0;
-        private int _baseIntelligence = 10;
-        private int _baseMana = 20;
+        private int _baseSkillPoint = 0; 
+        private int _baseStrength = 15;
+        private int _baseStamina = 20;
+        private int _baseAgility = 20;
         private int _baseHealthPoints = 20;
+        private int _baseDeffence = 15;
 
 
         private const int RequiredLevelModifier = 1000;
 
-        //public Magician()
+        //public Warrior()
         //{
         //    Name = "Doe";
         //    Age = 30;
         //    Level = 10;
         //    Rarity = Rarity.Common;
         //}
-
-        public Warrior (int age, int level, string name, int strength, int stamina, int agility, int healthPoints, Race race, Rarity rarity)
+        public Warrior (int age, int level, string name, int strength, int deffence,
+            int stamina, int agility, int healthPoints, Race race, Rarity rarity)
         {
-
             Name = name;
             Age = age;
             Level = level;
             HealthPoints = healthPoints;
+            Deffence = deffence;
             Strength = strength;
             Stamina = stamina;
             Agility = agility;
@@ -38,19 +41,18 @@ namespace MagicBattle
             Race = race;
         }
 
-
         public Rarity Rarity { get; private set; }
         public Race Race { get; private set; }
 
-        public int Power => (int)Rarity * 2 + Level * 10 + _skills.Count * 10 + _basePower * 3;
+        public int Power => (int)Rarity * 2 + Level * 10 + _skills.Count * 10 + _basePower * 3 + (int)Race * 2;
 
         public int RemainingExp => RequiredExp - _experience;
 
         private int RequiredExp => (Level + 1) * RequiredLevelModifier;
 
-        public void LearnSpell(string spell)
+        public void LearnSkill(string skill)
         {
-            _skills.Add(spell);
+            _skills.Add(skill);
         }
 
         public void RenameCharacter(string newName)
@@ -77,8 +79,9 @@ namespace MagicBattle
         public override string ToString()
         {
             var baseData = base.ToString();
-            return $"{baseData}.HP: {HealthPoints}, Strength: {Strength}, Stamina: {Stamina}, Agility: {Agility}, Rase: {Race}, {Rarity} Magician  " +
-                $"has {Power} power score with {_skills.Count} spells";
+            return $"{baseData}.HP: {HealthPoints}, Strength: {Strength}, Deffence {Deffence}" +
+                $"Stamina: {Stamina}, Agility: {Agility}, Rase: {Race}, {Rarity} Warrior  " +
+                $"has {Power} power score with {_skills.Count} skill";
         }
     }
 }

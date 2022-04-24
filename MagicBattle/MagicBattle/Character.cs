@@ -4,8 +4,9 @@
     {      
         public int Strength { get; protected set; }
         public int Stamina { get; protected set; }
-
+        public int SkillPoint { get; protected set; }
         public int Agility { get; protected set; }
+        public int Deffence { get; protected set; }
         public int Mana { get; protected set; }
         public int Intelligence { get; protected set; }
         public string Name { get; protected set; }
