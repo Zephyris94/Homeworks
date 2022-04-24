@@ -77,7 +77,7 @@ namespace MagicBattle
         public override string ToString()
         {
             var baseData = base.ToString();
-            return $"{baseData}.HP: {HealthPoints}, Mana: {Mana}, Intelligence: {Intelligence}, Rase: {Race}, {Rarity} Magician  " +
+            return $"{baseData}.HP: {HealthPoints}, Strength: {Strength}, Stamina: {Stamina}, Agility: {Agility}, Rase: {Race}, {Rarity} Magician  " +
                 $"has {Power} power score with {_skills.Count} spells";
         }
     }
