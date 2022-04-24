@@ -15,17 +15,27 @@ namespace MagicBattle
         private int _baseAgility = 20;
         private int _baseHealthPoints = 20;
         private int _baseDeffence = 15;
+        private int _baseLvl = 0;
+        private string _baseName = "User";
+        private int _baseAge = 0;
 
 
         private const int RequiredLevelModifier = 1000;
 
-        //public Warrior()
-        //{
-        //    Name = "Doe";
-        //    Age = 30;
-        //    Level = 10;
-        //    Rarity = Rarity.Common;
-        //}
+        public Warrior()
+        {
+            Name = _baseName;
+            Age = _baseAge;
+            Level = _baseLvl;
+            Race = Race.Unknown;
+            Rarity = Rarity.Common;
+            Deffence = _baseDeffence;
+            HealthPoints = _baseHealthPoints;
+            Stamina = _baseStamina;
+            Agility = _baseAgility;
+            Strength = _baseStrength;
+            SkillPoint = _baseSkillPoint;
+        }
         public Warrior (int age, int level, string name, int strength, int deffence,
             int stamina, int agility, int healthPoints, Race race, Rarity rarity)
         {
@@ -79,7 +89,7 @@ namespace MagicBattle
         public override string ToString()
         {
             var baseData = base.ToString();
-            return $"{baseData}.HP: {HealthPoints}, Strength: {Strength}, Deffence {Deffence}" +
+            return $"{baseData}.HP: {HealthPoints}, Strength: {Strength}, Deffence {Deffence} " +
                 $"Stamina: {Stamina}, Agility: {Agility}, Rase: {Race}, {Rarity} Warrior  " +
                 $"has {Power} power score with {_skills.Count} skill";
         }

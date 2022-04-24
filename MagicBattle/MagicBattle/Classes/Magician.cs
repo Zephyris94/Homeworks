@@ -7,24 +7,39 @@ namespace MagicBattle
         private List<string> _spells = new List<string>();
         private int _basePower = 0;
         private int _experience = 0;
+        private int _baseSkillPoint = 0;
         private int _baseIntelligence = 10;
         private int _baseMana = 20;
         private int _baseHealthPoints = 20;
+        private int _baseDeffence = 10;
+        private int _baseLvl = 0;
+        private string _baseName = "User";
+        private int _baseAge = 0;
 
 
         private const int RequiredLevelModifier = 1000;
 
-        //public Magician()
-        //{
-        //    Name = "Doe";
-        //    Age = 30;
-        //    Level = 10;
-        //    Rarity = Rarity.Common;
-        //}
+        public Magician()
+        {
+            Name = _baseName;
+            Age = _baseAge;
+            Level = _baseLvl;
+            Race = Race.Unknown;
+            Rarity = Rarity.Common;
+            Deffence = _baseDeffence;                      
+            HealthPoints = _baseHealthPoints;
+            Mana = _baseMana;
+            Intelligence = _baseIntelligence;
+            SkillPoint = _baseSkillPoint;
+            
+        }
 
         public Magician(int age, int level, string name, int mana, int intelligence, int healthPoints, Race race, Rarity rarity)           
         {
             
+            Name = name;
+            Age = age;
+            Level = level;
             Name = name;
             Age = age;
             Level = level;
@@ -75,14 +90,9 @@ namespace MagicBattle
         public override string ToString()
         {
             var baseData = base.ToString();
-            return $"{baseData}.HP: {HealthPoints}, Mana: {Mana}, Intelligence: {Intelligence}, Rase: {Race}, {Rarity} Magician  " +
-                $"has {Power} power score with {_spells.Count} spells";
+            return $"{baseData}.HP: {HealthPoints}, Strength: {Strength}, Deffence {Deffence} " +
+                $"Stamina: {Stamina}, Agility: {Agility}, Rase: {Race}, {Rarity} Warrior  " +
+                $"has {Power} power score with {_spells.Count} skill";
         }
-
-        //public static Magician operator +(Magician m1, Magician m2)
-        //{
-        //    Magician newMagician = new Magician(m1.Age + m2.Age, m1.Level + m2.Level, "ULTRAXXX", Rarity.Legendary);
-        //    return newMagician;
-        //}
     }
 }
