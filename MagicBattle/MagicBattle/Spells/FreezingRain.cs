@@ -7,6 +7,13 @@ namespace MagicBattle.Spells
 {
     internal class FreezingRain: Spell
     {
+        public FreezingRain()
+        {
+            Damage = 50;
+            ManaCost = 20;
+            Effect = "Ледяной дождь";
+            TypeOfMagic = TypeOfMagic.Wather;
+        }
 
         public FreezingRain(int damage, int manacost, string effect, TypeOfMagic typeOfMagic)
         {
