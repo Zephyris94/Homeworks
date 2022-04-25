@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Homework by #OleksiiV
+using System;
 using System.Net;
 using System.Net.Http;
 
