@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MagicBattle
 {
-    internal class Spell
+    public class Spell
     {
         private const int MaxSpellPower = 1000;
         public static int SpellID { get; private set; } = 0;

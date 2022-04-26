@@ -4,7 +4,7 @@ namespace MagicBattle
 {
     public class Magician : Human
     {
-        private List<string> _spells = new List<string>();
+        private List<Spell> _spells = new List<Spell>();
         private int _basePower = 0;
         private int _experience = 0;        
 
@@ -35,7 +35,12 @@ namespace MagicBattle
 
         private int RequiredExp => (Level + 1) * RequiredLevelModifier;
 
-        public void LearnSpell(string spell)
+        public void LearnSpell(Spell spell)
+        {
+            _spells.Add(spell);
+        }
+
+        public void LearnDestructionSpell(DestructionSpell spell)
         {
             _spells.Add(spell);
         }
