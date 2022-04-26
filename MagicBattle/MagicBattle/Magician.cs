@@ -1,19 +1,29 @@
 ﻿using System.Collections.Generic;
-
+using System;
 namespace MagicBattle
 {
     public class Magician : Human
     {
-        private List<string> _spells = new List<string>();
-        private int _basePower = 0;
+        private List<Spell> _spells = new List<Spell>();
+        public int BasePower => Intelligence * 2;
         private int _experience = 0;
 
-        private const int RequiredLevelModifier = 1000;
+        private const int RequiredLevelModifier = 100;
+
+        public int Level { get; private set; } = 1;
+
+        public Rarity Rarity { get; private set; }
+
+        public int Power => (int)Rarity * 2 + Level * 10 + _spells.Count * 10 + BasePower * 3;
+
+        private int RequiredExp => (Level + 1) * RequiredLevelModifier;
+
+        public int RemainingExp => RequiredExp - _experience;
 
         public Magician()
-            : base(25, "Doe")
+            : base(25, "John")
         {
-            Level = 10;
+            Level = 1;
             Rarity = Rarity.Common;
         }
 
@@ -24,41 +34,27 @@ namespace MagicBattle
             Rarity = rarity;
         }
 
-
-        public int Level { get; private set; }
-
-        public Rarity Rarity { get; private set; }
-
-        public int Power => (int) Rarity * 2 + Level * 10 + _spells.Count * 10 + _basePower*3;
-
-        public int RemainingExp => RequiredExp - _experience;
-
-        private int RequiredExp => (Level + 1) * RequiredLevelModifier;
-
-        public void LearnSpell(string spell)
+        public void LearnSpell()
         {
-            _spells.Add(spell);
-        }
+            _spells.Add(new Spell("Blast", Spell.SpellType.Exort, Spell.SpellDifficulty.Normal, "FIRE"));
+            _spells.Add(new Spell("Icefall", Spell.SpellType.Quas, Spell.SpellDifficulty.Hard, "ICE"));
 
-        public void RenameCharacter(string newName)
-        {
-            Name = newName;
+            foreach (Spell part in _spells)
+            {
+                Console.WriteLine(part.ToString());
+            }
         }
 
         public void GainExperience(int experience)
         {
             _experience += experience;
 
-            if (_experience > RemainingExp)
+            if (_experience >= RemainingExp)
             {
                 Level++;
+                Intelligence++;
                 _experience = _experience - RemainingExp;
             }
-        }
-
-        public void IncreasePower()
-        {
-            _basePower++;
         }
 
         public override string ToString()

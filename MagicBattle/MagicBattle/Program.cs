@@ -13,16 +13,17 @@ namespace MagicBattle
 
             Console.WriteLine(magician.ToString());
             Console.WriteLine($"We need {magician.RemainingExp} experinece to levelup");
+            Console.WriteLine($"HP: {magician.HealthPoints}, MP: {magician.ManaPoints}\n");
 
             magician.GainExperience(magician.RemainingExp + 10);
+            magician.RenameCharacter("Don");
             Console.WriteLine(magician);
             Console.WriteLine($"We need {magician.RemainingExp} experinece to levelup");
+            Console.WriteLine($"HP: {magician.HealthPoints}, MP: {magician.ManaPoints}\n");
 
-            var secondMage = new Magician(20, 5, "Gman", Rarity.Common);
-
-            var result = magician + secondMage;
-            Console.WriteLine(result);
-
+            magician.GainExperience(50);
+            Console.WriteLine(magician.ToString());
+            magician.LearnSpell();
         }
     }
 }
