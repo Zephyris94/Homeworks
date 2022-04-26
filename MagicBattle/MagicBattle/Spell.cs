@@ -7,15 +7,17 @@ namespace MagicBattle
     public class Spell
     {
         public Spell(string spellName, SpellType spellType, SpellDifficulty spellDifficulty,
-            string SpellEffect)
+            string spellEffect)
         {
             Name = spellName;
             Type = spellType;
             Difficulty = spellDifficulty;
-            Effect = SpellEffect;
+            Effect = spellEffect;
         }
 
-        SpellType Type = SpellType.Unknown;
+        // Move enums to separate files
+        // always type modifier
+        private SpellType Type = SpellType.Unknown;
         public enum     SpellType       
         {
             Unknown,
