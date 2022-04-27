@@ -2,10 +2,11 @@
 {
     public enum DestructionSpellEffects
     {
-        Electrified = 1,
-        Burning = 2,
-        Wet = 3,
-        Cold = 4,
+        None = 0,
+        Burning = 1,        
+        Cold = 2,
+        Electrified = 3,
+        Wet = 4,
 
         Vaporise = 10, //Burning + Wet
         Superconduct = 11, //Cold + Electrified

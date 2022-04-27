@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Collections.Generic;
 
 namespace MagicBattle
 {
@@ -22,12 +23,26 @@ namespace MagicBattle
             //var result = magician + secondMage;
             //Console.WriteLine(result);
 
-            Spell testspell = new Spell();
-            Console.WriteLine(testspell.SpellInfo());
-            DestructionSpell test2 = new DestructionSpell();
-            test2.Name = "asdf";
-            Console.WriteLine(test2.SpellInfo());
+            DestructionSpell destructionSpell = new DestructionSpell();
+            List<DestructionSpell> destructionSpellList = new List<DestructionSpell>(destructionSpell.CreateDestructionSpellsList(10));
 
+            Console.WriteLine("Unsorted list of spells\n");
+
+            foreach (DestructionSpell spell in destructionSpellList)
+            {
+                Console.WriteLine(spell.DestructionSpellInfo());
+            }
+
+            Console.WriteLine("\nList of spells sorted by Power\n");
+
+            var sortedList = destructionSpell.SortByPower(destructionSpellList);
+
+            foreach (DestructionSpell spell in sortedList)
+            {
+                Console.WriteLine(spell.DestructionSpellInfo());
+            }
+
+            Console.WriteLine($"\nSo the strongest spell is {destructionSpell.GetTheStrongestSpell(destructionSpellList).DestructionSpellInfo()}");
 
         }
     }
