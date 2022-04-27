@@ -40,6 +40,11 @@ namespace MagicBattle
             _spells.Add(spell);
         }
 
+        public void LearnDestructionSpell(DestructionSpell spell)
+        {
+            _spells.Add(spell);
+        }
+
         public void RenameCharacter(string newName)
         {
             Name = newName;
