@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
+using MagicBattle.Spells;
 
 namespace MagicBattle
 {
     public class Magician : Human
     {
-        private List<string> _spells = new List<string>();
+        private List<Spell> _spells = new List<Spell>();
         private int _basePower = 0;
         private int _experience = 0;
 
         private const int RequiredLevelModifier = 1000;
 
         public Magician()
-            : base(25, "Doe")
+            : base()
         {
-            Level = 10;
-            Rarity = Rarity.Common;
         }
 
         public Magician(int age, int level, string name, Rarity rarity)
@@ -35,7 +34,7 @@ namespace MagicBattle
 
         private int RequiredExp => (Level + 1) * RequiredLevelModifier;
 
-        public void LearnSpell(string spell)
+        public void LearnSpell(Spell spell)
         {
             _spells.Add(spell);
         }

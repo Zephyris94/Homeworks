@@ -21,7 +21,6 @@ namespace MagicBattle
 
             var result = magician + secondMage;
             Console.WriteLine(result);
-
         }
     }
 }

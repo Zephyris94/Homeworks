@@ -6,6 +6,11 @@
 
         public int Age { get; protected set; }
 
+        public Human()
+        {
+            
+        }
+
         public Human(int age, string name)
         {
             Name = name;
