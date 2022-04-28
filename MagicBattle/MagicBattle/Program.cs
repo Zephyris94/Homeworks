@@ -8,7 +8,7 @@ namespace MagicBattle
     {
         static void Main(string[] args)
         {
-            var magician = new Magician(27, 10, "Vlad", Rarity.Epic);
+            var magician = new Magician(27, 10, "Vlad", Rarity.Epic, 100);
 
             //Console.WriteLine(magician.ToString());
             //Console.WriteLine($"We need {magician.RemainingExp} experinece to levelup");
@@ -17,7 +17,7 @@ namespace MagicBattle
             //Console.WriteLine(magician);
             //Console.WriteLine($"We need {magician.RemainingExp} experinece to levelup");
 
-            var secondMage = new Magician(20, 5, "Gman", Rarity.Common);
+            var secondMage = new Magician(20, 5, "Gman", Rarity.Common, 100);
 
             var result = magician + secondMage;
             Console.WriteLine(result);
