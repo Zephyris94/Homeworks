@@ -32,7 +32,7 @@ namespace LessonOne.Models
         public override string ReturnInformation()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"This Infirmary is {FloorCount} floors tall.");
+            sb.AppendLine($"This Clinic is {BildingName} and have {FloorCount} floors tall.");
             sb.AppendLine($"It has {CarCount} cars");
             sb.AppendLine($"It is occupied by {PatientCount} both {PatientType.Civilian} and {PatientType.Military} patients");
             return sb.ToString();

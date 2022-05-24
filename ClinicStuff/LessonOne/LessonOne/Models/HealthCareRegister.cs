@@ -11,15 +11,23 @@ namespace LessonOne.Models
 
         public HealthCareRegister()
         {
-            
+           
         }
 
         public HealthCareRegister(List<HealthcareBuilding> buildings)
         {
             _hcBuildings.AddRange(buildings);
         }
+        public void AddExsistingBuilding(HealthcareBuilding building)
+        {
+            _hcBuildings.Add(building);
+        }
+        public void AddExsistingBuildings(IEnumerable<HealthcareBuilding> buildings)
+        {
+            _hcBuildings.AddRange(buildings);
+        }
 
-        public void AddNewBuilding(BuildingType type, int carCount, int floorCount, int maxPatients)
+        public void AddNewBuilding(BuildingType type, int carCount, int floorCount, int maxPatients, string bildingName )
         {
             HealthcareBuilding b;
 
@@ -36,6 +44,7 @@ namespace LessonOne.Models
                     ValidateCount(floorCount, Hospital.MinFloors, Hospital.MaxFloors, "Floor");
 
                     b = new Hospital(floorCount, carCount, maxPatients);
+                    
                     break;
                 case BuildingType.Infirmary:
                     ValidateCount(carCount, Infirmary.MinCars, Infirmary.MaxCars, "Car");
@@ -77,6 +86,8 @@ namespace LessonOne.Models
 
             return myResult;
         }
+
+
 
         public HealthcareBuilding FindWithFreeCar(BuildingType type)
         {
@@ -121,6 +132,16 @@ namespace LessonOne.Models
             {
                 throw new Exception($"{entity} count is wrong");
             }
+        }
+        public HealthcareBuilding GetBuildingByIndex(int index)
+        {
+            index--; // делаем число из человеческого - понятным машине, где нумерация с нуля.
+            if (_hcBuildings.Count >= index)
+            {
+                return _hcBuildings[index];
+            }
+
+            throw new Exception("Building with this index does not exist");
         }
     }
 }

@@ -9,6 +9,7 @@ namespace LessonOne.Models
         public int FloorCount { get; protected set; }
 
         public int CarCount { get; protected set; }
+        public string BildingName { get; protected set; }
 
         public int UsedCarCount { get; protected set; }
 
@@ -23,6 +24,7 @@ namespace LessonOne.Models
             FloorCount = floorCount;
             CarCount = carCount;
             MaxPatients = maxPatients;
+           // bildingName = bildingName;
         }
 
         public abstract void RegisterPatient(Patient patient);
