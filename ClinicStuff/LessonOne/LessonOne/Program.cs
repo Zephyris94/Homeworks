@@ -39,7 +39,15 @@ namespace LessonOne
                     case ConsoleKey.D3:
                         GetBiggestBuildingCommand(register);
                         break;
-                   
+                    case ConsoleKey.D4:
+                        GetMostEmptytBuildingCommand(register);
+                        break;
+                    case ConsoleKey.D5:
+                        GetFreeCarstBuildingCommand(register);
+                        break;
+                    case ConsoleKey.D6:
+                        GetFullInformation(register, activeBuilding);
+                        break;
                     case ConsoleKey.D8:
                         FileReader(register, reader);
                         break;
@@ -86,7 +94,6 @@ namespace LessonOne
 
         static void FileReader(HealthCareRegister reg, BildingFileReader read)
         {
-
             var pre = read.GetBuildings();
             reg.AddExsistingBuildings(pre);
         }
@@ -149,7 +156,7 @@ namespace LessonOne
         static HealthcareBuilding GetBiggestBuildingCommand(HealthCareRegister reg)
         {
             var key = Console.ReadKey();
-            Console.WriteLine("Choose building type : 1 - Clinic, 2 - Hospital 3,");
+            Console.WriteLine("Choose building type : 1 - Clinic, 2 - Hospital 3 Infirmary,");
             switch (key.Key)
             {
                 case ConsoleKey.D1:
@@ -163,9 +170,48 @@ namespace LessonOne
                     break;
             }
             return null;
-            return reg.FindBiggest(BuildingType.Hospital);
         }
-
+        static HealthcareBuilding GetMostEmptytBuildingCommand(HealthCareRegister reg)
+        {
+            var key = Console.ReadKey();
+            Console.WriteLine("Choose building type : 1 - Clinic, 2 - Hospital 3 Infirmary,");
+            switch (key.Key)
+            {
+                case ConsoleKey.D1:
+                    return reg.FindMostEmpty(BuildingType.Clinic);
+                case ConsoleKey.D2:
+                    return reg.FindMostEmpty(BuildingType.Hospital);
+                case ConsoleKey.D3:
+                    return reg.FindMostEmpty(BuildingType.Infirmary);
+                default:
+                    Console.WriteLine("Try again");
+                    break;
+            }
+            return null;
+        }
+        static HealthcareBuilding GetFreeCarstBuildingCommand(HealthCareRegister reg)
+        {
+            var key = Console.ReadKey();
+            Console.WriteLine("Choose building type : 1 - Clinic, 2 - Hospital 3 Infirmary,");
+            switch (key.Key)
+            {
+                case ConsoleKey.D1:
+                    return reg.FindWithFreeCar(BuildingType.Clinic);
+                case ConsoleKey.D2:
+                    return reg.FindWithFreeCar(BuildingType.Hospital);
+                case ConsoleKey.D3:
+                    return reg.FindWithFreeCar(BuildingType.Infirmary);
+                default:
+                    Console.WriteLine("Try again");
+                    break;
+            }
+            return null;
+        }
+        static void GetFullInformation( HealthCareRegister reg , HealthcareBuilding b)
+        {
+           
+                  reg.GetInformation(b);
+        } 
         static void DisplayMenu()
         {
             Console.WriteLine("Input 1 to create a new building");
@@ -175,7 +221,7 @@ namespace LessonOne
             Console.WriteLine("Input 5 to find first building with free car");
             Console.WriteLine("Input 6 to get all building information");
             Console.WriteLine("Input 7 to get full register");
-            Console.WriteLine("Input 8 to add information from file");
+            Console.WriteLine("Input 8 to read information from file");
             Console.WriteLine("Input 9 GetWholeInformation");
             Console.WriteLine("Input 'e' for exit");
         }
