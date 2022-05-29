@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 
@@ -44,14 +45,15 @@ namespace MegaRaceConsole
 
     static void Run(RaceCar car, int trackNumber, int raceInfo)
     {
-      //string winner = "";
+      var sw = Stopwatch.StartNew();
+      
       Random rnd = new Random();
-      int sleep = (rnd.Next(20, 30) * 50) - car.Speed;
+      int sleep = (rnd.Next(15, 25) * 50) - car.Speed;
 
       int finishLine = Console.WindowWidth - 7;
       int crashLine = Console.WindowWidth;
 
-      var speed = 0;
+     int speed = 0, counter = 0;
       try
       {
         for (int i = 1; i < finishLine; i += (car.TeamRaiting + car.PilotRaiting))
@@ -74,7 +76,7 @@ namespace MegaRaceConsole
 
 
           Console.SetCursorPosition(speed, trackNumber);
-          Console.Write($"#-#>");
+          Console.Write($"#>");
         }
       }
       catch
@@ -88,12 +90,14 @@ namespace MegaRaceConsole
       }
       finally
       {
+        sw.Stop();
+        var t = sw.Elapsed;
         //if (speed >= finishLine && speed < crashLine)
         //{
-          //i = i + finishLine;
-          Console.SetCursorPosition(0, 10 + trackNumber);
-          Console.WriteLine($"Congratulations!!! {car.Pilot} finish the race");
-          //Console.Write();
+        //i = i + finishLine;
+        Console.SetCursorPosition(0, 10 + trackNumber);
+        Console.WriteLine($"Congratulations!!! {car.Pilot} finish the race on {t} time");
+        //Console.Write();
         //}
       }
     }
@@ -108,9 +112,9 @@ namespace MegaRaceConsole
       carSchuma.PilotRaiting = rnd.Next(5, 10);
       carSchuma.TeamRaiting = rnd.Next(7, 10);
 
-      var carHakkinen = new RaceCar(ConsoleColor.Blue , 260, "Hakkinen");
-      carHakkinen.PilotRaiting = rnd.Next(3, 8);
-      carHakkinen.TeamRaiting = rnd.Next(5, 8);
+      var carHakkinen = new RaceCar(ConsoleColor.Yellow, 300, "Hakkinen");
+      carHakkinen.PilotRaiting = rnd.Next(5, 8);
+      carHakkinen.TeamRaiting = rnd.Next(5, 9);
 
       int mikRaceInfo = 0;
       int mikTrackNumber = Console.CursorTop + 1;
@@ -126,16 +130,23 @@ namespace MegaRaceConsole
       Thread pos2 = new Thread(() =>
         Run(carHakkinen, kimiTrackNumber, kimiRaceInfo));
 
-
+      var swMik = Stopwatch.StartNew();
       pos1.Start();
+      swMik.Stop();
+      ;
 
+      
       pos2.Start();
+      //swKimi.Stop();
+
+      //string vinner = (swMik.Elapsed > swKimi.Elapsed) ?
+        //$"{carSchuma.Pilot} WINNER of the Race" : $"{carHakkinen.Pilot} WINNER of the Race";
+
+      
+      //Console.WriteLine(vinner);
 
 
-      Console.WriteLine(raceResult);
-
-
-
+      ///How understand who is the winner??
 
 
 
