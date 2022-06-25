@@ -1,4 +1,4 @@
-﻿namespace MagicBattle
+﻿namespace MagicBattle.Enums
 {
     public enum Rarity
     {

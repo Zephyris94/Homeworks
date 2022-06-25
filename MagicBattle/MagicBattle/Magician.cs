@@ -1,24 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using MagicBattle.Enums;
+using MagicBattle.Spells;
+using System.Collections.Generic;
 
 namespace MagicBattle
 {
     public class Magician : Human
     {
-        private List<string> _spells = new List<string>();
+        public List<string> _spells = new List<string>();
         private int _basePower = 0;
         private int _experience = 0;
 
         private const int RequiredLevelModifier = 1000;
 
         public Magician()
-            : base(25, "Doe")
+            : base(25, "Doe", 100, 10, 100, 10)
         {
             Level = 10;
             Rarity = Rarity.Common;
         }
 
-        public Magician(int age, int level, string name, Rarity rarity)
-            : base(age, name)
+        public Magician(int age, int level, string name, Rarity rarity, int maxHP, int HP, int maxMana, int mana)
+            : base(age, name, maxHP, HP, maxMana, mana)
         {
             Level = level;
             Rarity = rarity;
@@ -40,6 +42,14 @@ namespace MagicBattle
             _spells.Add(spell);
         }
 
+        public void ShowSpells()
+        {
+            foreach(var Spells in _spells)
+            {
+                System.Console.WriteLine($"spell: {Spells}");
+            }
+
+        }
         public void RenameCharacter(string newName)
         {
             Name = newName;
@@ -64,13 +74,7 @@ namespace MagicBattle
         public override string ToString()
         {
             var baseData = base.ToString();
-            return $"{baseData}. {Rarity} Magician {Level} lvl. has {Power} power score with {_spells.Count} spells";
-        }
-
-        public static Magician operator +(Magician m1, Magician m2)
-        {
-            Magician newMagician = new Magician(m1.Age + m2.Age, m1.Level + m2.Level, "ULTRAXXX", Rarity.Legendary);
-            return newMagician;
+            return $"{baseData}. \n{Rarity} Magician {Level} lvl. has {Power} power score with {_spells.Count} spells";
         }
     }
 }
