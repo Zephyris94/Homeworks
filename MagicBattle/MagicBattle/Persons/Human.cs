@@ -1,4 +1,4 @@
-﻿namespace MagicBattle
+﻿namespace MagicBattle.Persons
 {
     public class Human
     {
@@ -6,14 +6,14 @@
         public int Age { get; protected set; }
         public int MaxHP { get; protected set; }
         public int HP { get; protected set; }
-        public int MaxMana { get; protected set; }  
-        public int Mana { get; protected set; } 
+        public int MaxMana { get; protected set; }
+        public int Mana { get; protected set; }
 
         public Human(int age, string name, int maxHP, int hp, int maxMana, int mana)
         {
             Name = name;
             Age = age;
-            MaxHP = maxHP;  
+            MaxHP = maxHP;
             HP = hp;
             MaxMana = maxMana;
             Mana = mana;

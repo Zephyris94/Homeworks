@@ -2,7 +2,7 @@
 using MagicBattle.Spells;
 using System.Collections.Generic;
 
-namespace MagicBattle
+namespace MagicBattle.Persons
 {
     public class Magician : Human
     {
@@ -31,7 +31,7 @@ namespace MagicBattle
 
         public Rarity Rarity { get; private set; }
 
-        public int Power => (int) Rarity * 2 + Level * 10 + _spells.Count * 10 + _basePower*3;
+        public int Power => (int)Rarity * 2 + Level * 10 + _spells.Count * 10 + _basePower * 3;
 
         public int RemainingExp => RequiredExp - _experience;
 
@@ -44,7 +44,7 @@ namespace MagicBattle
 
         public void ShowSpells()
         {
-            foreach(var Spells in _spells)
+            foreach (var Spells in _spells)
             {
                 System.Console.WriteLine($"spell: {Spells}");
             }
