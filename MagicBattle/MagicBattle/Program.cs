@@ -1,4 +1,5 @@
 ﻿using MagicBattle.Enums;
+using MagicBattle.Persons;
 using System;
 using MagicBattle;
 
@@ -74,6 +75,9 @@ namespace MagicBattle
                 );
 
             magician.ShowSpells();
+            magician.CastSpell(0);
+            magician.CastSpell(1);
+
 
             Console.ReadKey();
         }

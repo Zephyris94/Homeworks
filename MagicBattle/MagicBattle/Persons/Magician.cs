@@ -1,5 +1,6 @@
 ﻿using MagicBattle.Enums;
 using MagicBattle.Spells;
+using System;
 using System.Collections.Generic;
 
 namespace MagicBattle.Persons
@@ -40,6 +41,18 @@ namespace MagicBattle.Persons
         public void LearnSpell(string spell)
         {
             _spells.Add(spell);
+        }
+
+        public void CastSpell(int spellNum)
+        {
+            try { 
+                var sp = _spells[spellNum];
+                Console.WriteLine($"cast {_spells[spellNum]}");
+            } 
+            catch 
+            {
+                Console.WriteLine($"spell {_spells[spellNum]} not found");
+            }
         }
 
         public void ShowSpells()

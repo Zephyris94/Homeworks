@@ -7,7 +7,7 @@
         public string SpellType { get; protected set; }
         public int Power { get; protected set; }
         public double Damage { get; protected set; }
-        public int Cooldown { get; protected set; } 
+        public int Cooldown { get; protected set; }
 
         public Spell(string spellName, string description, int power, double damage, int cooldown, string spellType)
         {
@@ -16,7 +16,7 @@
             Power = power;
             Damage = damage;
             Cooldown = cooldown;
-            SpellType = spellType;  
+            SpellType = spellType;
         }
 
         public Spell(string spellName, string description, string spellType, int power, double damage, int cooldown)
